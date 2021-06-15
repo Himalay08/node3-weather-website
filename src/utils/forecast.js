@@ -9,12 +9,15 @@ const forecast=(latitude,longitude,callback)=>{
       }else if(body.error){
         callback('Unable to connect try another services',undefined)
       }else{
-          callback(undefined,{
-            // message:'It is currently '+response.body.main.temp_min+' degree out',
-            name:body.name,
-            temp_min:body.main.temp_min,
-            temp_max:body.main.temp_max
-          })
+    console.log(body)    
+          callback(undefined,
+            
+            'It is currently '+body.weather[0].description+' and high and low tempreture respectively is '+body.main.temp_max+' and '+body.main.temp_min+' degree out. There is a wind speed is '+body.wind.speed+'km/h and pressure is '+body.main.pressure+' outside.'
+            
+            // name:body.main.pressure,
+            // temp_min:body.main.temp_min,
+            // temp_max:body.main.temp_max
+          )
 
       }
   })
